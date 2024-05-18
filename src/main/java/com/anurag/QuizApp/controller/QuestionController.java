@@ -1,6 +1,6 @@
 package com.anurag.QuizApp.controller;
 
-import com.anurag.QuizApp.Question;
+import com.anurag.QuizApp.model.Question;
 import com.anurag.QuizApp.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

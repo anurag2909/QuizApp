@@ -1,6 +1,6 @@
 package com.anurag.QuizApp.service;
 
-import com.anurag.QuizApp.Question;
+import com.anurag.QuizApp.model.Question;
 import com.anurag.QuizApp.dao.QuestionDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
