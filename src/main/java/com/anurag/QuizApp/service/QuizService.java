@@ -5,6 +5,7 @@ import com.anurag.QuizApp.dao.QuizDao;
 import com.anurag.QuizApp.model.Question;
 import com.anurag.QuizApp.model.QuestionWrapper;
 import com.anurag.QuizApp.model.Quiz;
+import com.anurag.QuizApp.model.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -53,5 +54,23 @@ public class QuizService {
         quizDao.save(quiz);
 
         return new ResponseEntity<>("success", HttpStatus.CREATED);
+    }
+
+    public ResponseEntity<Integer> calculateResult(Integer id, List<Response> responses) {
+        Quiz quiz = quizDao.findById(id).get();
+        List<Question> questions = quiz.getQuestions();
+
+        int right = 0, i=0;
+
+        for (Response response : responses){
+            if (response.getResponse().equals(questions.get(i).getRightAnswer())) {
+                right++;
+            }
+
+            i++;
+        }
+
+        return new ResponseEntity<>(right, HttpStatus.OK);
+
     }
 }
